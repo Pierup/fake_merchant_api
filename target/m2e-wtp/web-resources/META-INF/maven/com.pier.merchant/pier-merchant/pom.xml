@@ -7,6 +7,15 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pier-merchant Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+
+	<properties>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<pier.sdk.version>0.0.1-SNAPSHOT</pier.sdk.version>
+		<maven.test.skip>true</maven.test.skip>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -55,8 +64,27 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
+		
+		<!-- <dependency>
+			<groupId>com.pier</groupId>
+			<artifactId>pier-java-sdk</artifactId>
+			<version>${pier.sdk.version}</version>
+		</dependency> -->
+		
 	</dependencies>
+
 	<build>
 		<finalName>pier-merchant</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
