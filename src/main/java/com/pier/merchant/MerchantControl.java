@@ -1,7 +1,8 @@
 package com.pier.merchant;
 
 import java.nio.charset.Charset;
-import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,22 +24,45 @@ import com.pier.sdk.MerchantSDKClient;
 @Controller
 @RequestMapping(value="/server/sdk")
 public class MerchantControl {
+	
+	/**
+	 * For demo purpose only, 
+	 * TODO: need to change to json POST
+	 */
+	
+	static final Map<String, String> hard_coded_note_map = new HashMap<String, String> (){
+		{
+			hard_coded_note_map.put("AAA000000001", "Sporting Shoes");
+			hard_coded_note_map.put("MC0000000010", "Tax Cab - LAX");
+			hard_coded_note_map.put("MC0000000011", "Museum Ticket");
+			hard_coded_note_map.put("MC0000000017", "Immigration Preparation");
+			hard_coded_note_map.put("MC0000000057", "Mother's day flowers");
+			hard_coded_note_map.put("MC0000000064", "Breads, donuts, coffee, etc.");
+			hard_coded_note_map.put("MC0000000083", "Chiropractor services");
+			hard_coded_note_map.put("MC0000000086", "Nail polishing");
+			hard_coded_note_map.put("MC0000000089", "Iced Caffè Latte, Tazo Bottled Lemon Ginger etc.");
+			hard_coded_note_map.put("MC0000000134", "Acupuncture and care");
+		}
+	};
+
+	
 	@RequestMapping(value="/pay/MC0000000134/{amount}/{auth_token}/{currency}/{order_id}",method=RequestMethod.GET)
 	public @ResponseBody JSONObject payMC0000000134(@PathVariable(value="auth_token") String auth_token,
 			@PathVariable(value="amount") Double amount,@PathVariable(value="currency") String currency,
 			@PathVariable(value="order_id") String order_id)
-	{
+	{	
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000134";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000134").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
 					.setApi_id("5b52051a-931a-11e4-aad2-0ea81fa3d43c").
 					setApi_secret_key("mk-test-5b52041f-931a-11e4-aad2-0ea81fa3d43c")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes("Health Care and Fitness").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -62,15 +86,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000134";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000134").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
 					.setApi_id("5b52051a-931a-11e4-aad2-0ea81fa3d43c").
 					setApi_secret_key("mk-test-5b52041f-931a-11e4-aad2-0ea81fa3d43c")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes("Health Care and Fitness").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -96,15 +121,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "AAA000000001";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("AAA000000001").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
-					.setApi_id("9181240c-c3a8-11e4-adb1-095385a3a244").
-					setApi_secret_key("mk-test-918125c2-c3a8-11e4-adb1-095385a3a244")
+					.setApi_id("9181240c-c3a8-11e4-adb1-095385a3a244")
+					.setApi_secret_key("mk-test-918125c2-c3a8-11e4-adb1-095385a3a244")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -128,15 +154,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "AAA000000001";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("AAA000000001").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
 					.setApi_id("9181240c-c3a8-11e4-adb1-095385a3a244").
 					setApi_secret_key("mk-test-918125c2-c3a8-11e4-adb1-095385a3a244")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -162,15 +189,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000010";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000010").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
 					.setApi_id("9495caa5-7fad-11e4-8328-32913f86e6ed").
 					setApi_secret_key("mk-test-9495ca5d-7fad-11e4-8328-32913f86e6ed")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -194,15 +222,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000010";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000010").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
 					.setApi_id("9495caa5-7fad-11e4-8328-32913f86e6ed").
 					setApi_secret_key("mk-test-9495ca5d-7fad-11e4-8328-32913f86e6ed")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -228,15 +257,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000011";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000011").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
 					.setApi_id("4ceccf36-7fae-11e4-8328-32913f86e6ed").
 					setApi_secret_key("mk-test-4ceccef0-7fae-11e4-8328-32913f86e6ed")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -260,15 +290,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000011";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000011").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
 					.setApi_id("4ceccf36-7fae-11e4-8328-32913f86e6ed").
 					setApi_secret_key("mk-test-4ceccef0-7fae-11e4-8328-32913f86e6ed")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -294,15 +325,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000017";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000017").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
 					.setApi_id("51423988-7f6b-11e4-8328-32913f86e6ed").
 					setApi_secret_key("mk-test-51423949-7f6b-11e4-8328-32913f86e6ed")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -326,15 +358,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000017";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000017").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
 					.setApi_id("51423988-7f6b-11e4-8328-32913f86e6ed").
 					setApi_secret_key("mk-test-51423949-7f6b-11e4-8328-32913f86e6ed")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -361,15 +394,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000057";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000057").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
 					.setApi_id("f4702c83-804a-11e4-8328-32913f86e6ed").
 					setApi_secret_key("mk-test-f4702c43-804a-11e4-8328-32913f86e6ed")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -394,15 +428,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000057";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000057").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
 					.setApi_id("f4702c83-804a-11e4-8328-32913f86e6ed").
 					setApi_secret_key("mk-test-f4702c43-804a-11e4-8328-32913f86e6ed")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -428,15 +463,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000064";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000064").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
 					.setApi_id("fa4472aa-7fac-11e4-8328-32913f86e6ed").
 					setApi_secret_key("mk-test-fa44726d-7fac-11e4-8328-32913f86e6ed")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -460,15 +496,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000064";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000064").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
 					.setApi_id("fa4472aa-7fac-11e4-8328-32913f86e6ed").
 					setApi_secret_key("mk-test-fa44726d-7fac-11e4-8328-32913f86e6ed")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -495,15 +532,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000083";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000083").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
 					.setApi_id("e0a71c29-8f89-11e4-aad2-0ea81fa3d43c").
 					setApi_secret_key("mk-test-e0a71b29-8f89-11e4-aad2-0ea81fa3d43c")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -527,15 +565,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000083";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000083").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
 					.setApi_id("e0a71c29-8f89-11e4-aad2-0ea81fa3d43c").
 					setApi_secret_key("mk-test-e0a71b29-8f89-11e4-aad2-0ea81fa3d43c")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes("Buy Shoes").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -561,15 +600,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000086";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000086").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
 					.setApi_id("7729d25a-903b-11e4-aad2-0ea81fa3d43c").
 					setApi_secret_key("mk-test-7729d14f-903b-11e4-aad2-0ea81fa3d43c")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes("Buy Beauty and Personal Care").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -593,15 +633,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000086";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000086").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
 					.setApi_id("7729d25a-903b-11e4-aad2-0ea81fa3d43c").
 					setApi_secret_key("mk-test-7729d14f-903b-11e4-aad2-0ea81fa3d43c")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes("Buy Beauty and Personal Care").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -627,15 +668,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000089";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000089").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
 					.setApi_id("6517be7b-810a-11e4-8328-32913f86e6ed").
 					setApi_secret_key("mk-test-6517be3b-810a-11e4-8328-32913f86e6ed")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes("Buy Food and Drink").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -659,15 +701,16 @@ public class MerchantControl {
 	{
 		JSONObject jsonObject=new JSONObject();
 		try {
+			String merchant_id = "MC0000000089";
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
-					.setMerchant_id("MC0000000089").build();
+					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
 					.setApi_id("6517be7b-810a-11e4-8328-32913f86e6ed").
 					setApi_secret_key("mk-test-6517be3b-810a-11e4-8328-32913f86e6ed")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes("Buy Food and Drink").build();
+					.setNotes(hard_coded_note_map.get(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
