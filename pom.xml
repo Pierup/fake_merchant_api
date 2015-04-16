@@ -69,7 +69,7 @@
 			<groupId>com.pier</groupId>
 			<artifactId>pier-java-sdk</artifactId>
 			<version>${pier.sdk.version}</version>
-		</dependency>
+		</dependency> 
 		
 	</dependencies>
 
