@@ -30,6 +30,7 @@ public class MerchantControl {
 	 * TODO: need to change to json POST
 	 */
 	
+	/*
 	static final Map<String, String> hard_coded_note_map = new HashMap<String, String> (){
 		{
 			hard_coded_note_map.put("AAA000000001", "Sporting Shoes");
@@ -43,7 +44,36 @@ public class MerchantControl {
 			hard_coded_note_map.put("MC0000000089", "Iced Caffè Latte, Tazo Bottled Lemon Ginger etc.");
 			hard_coded_note_map.put("MC0000000134", "Acupuncture and care");
 		}
-	};
+	};*/
+	
+	private String getDummyNotes(String merchant_id){
+		switch (merchant_id){
+		case "AAA000000001":
+			return "Sporting Shoes";
+		case "MC0000000010":
+			return "Tax Cab - LAX";
+		case "MC0000000011":
+			return "Museum Ticket";
+		case "MC0000000017":
+			return "Immigration Preparation";
+		case "MC0000000057": 
+			return "Mother's day flowers";
+			
+		case "MC0000000064":
+			return "Breads, donuts, coffee, etc.";
+		case "MC0000000083":
+			return "Chiropractor services";
+		case "MC0000000086":
+			return "Nail polishing";
+		case "MC0000000089":
+			return "Iced Caffè Latte, Tazo Bottled Lemon Ginger etc.";
+		case "MC0000000134":
+			return "Acupuncture and care";
+		default:
+			return "";
+					
+		}
+	}
 
 	
 	@RequestMapping(value="/pay/MC0000000134/{amount}/{auth_token}/{currency}/{order_id}",method=RequestMethod.GET)
@@ -62,7 +92,7 @@ public class MerchantControl {
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -95,7 +125,7 @@ public class MerchantControl {
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -130,7 +160,7 @@ public class MerchantControl {
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -163,7 +193,7 @@ public class MerchantControl {
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -198,7 +228,7 @@ public class MerchantControl {
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -231,7 +261,7 @@ public class MerchantControl {
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -266,7 +296,7 @@ public class MerchantControl {
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -299,7 +329,7 @@ public class MerchantControl {
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -334,7 +364,7 @@ public class MerchantControl {
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -367,7 +397,7 @@ public class MerchantControl {
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -403,7 +433,7 @@ public class MerchantControl {
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -437,7 +467,7 @@ public class MerchantControl {
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -472,7 +502,7 @@ public class MerchantControl {
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -505,7 +535,7 @@ public class MerchantControl {
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -541,7 +571,7 @@ public class MerchantControl {
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -574,7 +604,7 @@ public class MerchantControl {
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -609,7 +639,7 @@ public class MerchantControl {
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -642,7 +672,7 @@ public class MerchantControl {
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -677,7 +707,7 @@ public class MerchantControl {
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
@@ -710,7 +740,7 @@ public class MerchantControl {
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
-					.setNotes(hard_coded_note_map.get(merchant_id)).build();
+					.setNotes(getDummyNotes(merchant_id)).build();
 			System.out.println("transaction request==========================");
 			System.out.println(config.toString());
 			SDKResult result = client.transaction(config);
