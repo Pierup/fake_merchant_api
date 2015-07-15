@@ -1,12 +1,8 @@
 package com.pier.merchant;
 
-import java.nio.charset.Charset;
-
-import javax.servlet.http.HttpServletRequest;
-
 import net.sf.json.JSONObject;
 
-import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
 import com.pier.model.SDKResult;
 import com.pier.model.TransactionConfig;
 import com.pier.sdk.MerchantSDKClient;
@@ -22,6 +17,8 @@ import com.pier.sdk.MerchantSDKClient;
 @Controller
 @RequestMapping(value="/server/sdk")
 public class MerchantControl {
+	
+	private Logger logger = Logger.getLogger(getClass());
 	
 	/**
 	 * For demo purpose only, 
@@ -85,8 +82,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
-					.setApi_id("5b52051a-931a-11e4-aad2-0ea81fa3d43c").
-					setApi_secret_key("mk-test-5b52041f-931a-11e4-aad2-0ea81fa3d43c")
+					.setApi_key("5b52051a-931a-11e4-aad2-0ea81fa3d43c")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
@@ -101,7 +97,6 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -118,8 +113,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
-					.setApi_id("5b52051a-931a-11e4-aad2-0ea81fa3d43c").
-					setApi_secret_key("mk-test-5b52041f-931a-11e4-aad2-0ea81fa3d43c")
+					.setApi_key("5b52051a-931a-11e4-aad2-0ea81fa3d43c")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
@@ -134,7 +128,6 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -153,8 +146,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
-					.setApi_id("9181240c-c3a8-11e4-adb1-095385a3a244")
-					.setApi_secret_key("mk-test-918125c2-c3a8-11e4-adb1-095385a3a244")
+					.setApi_key("9181240c-c3a8-11e4-adb1-095385a3a244")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
@@ -169,10 +161,10 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
+			logger.error(e);
 		}
 		return jsonObject;
 	}
@@ -186,8 +178,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
-					.setApi_id("9181240c-c3a8-11e4-adb1-095385a3a244").
-					setApi_secret_key("mk-test-918125c2-c3a8-11e4-adb1-095385a3a244")
+					.setApi_key("9181240c-c3a8-11e4-adb1-095385a3a244")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
@@ -202,7 +193,6 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -221,8 +211,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
-					.setApi_id("9495caa5-7fad-11e4-8328-32913f86e6ed").
-					setApi_secret_key("mk-test-9495ca5d-7fad-11e4-8328-32913f86e6ed")
+					.setApi_key("9495caa5-7fad-11e4-8328-32913f86e6ed")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
@@ -237,7 +226,6 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -254,8 +242,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
-					.setApi_id("9495caa5-7fad-11e4-8328-32913f86e6ed").
-					setApi_secret_key("mk-test-9495ca5d-7fad-11e4-8328-32913f86e6ed")
+					.setApi_key("9495caa5-7fad-11e4-8328-32913f86e6ed")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
@@ -270,7 +257,6 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -289,8 +275,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
-					.setApi_id("4ceccf36-7fae-11e4-8328-32913f86e6ed").
-					setApi_secret_key("mk-test-4ceccef0-7fae-11e4-8328-32913f86e6ed")
+					.setApi_key("4ceccf36-7fae-11e4-8328-32913f86e6ed")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
@@ -305,7 +290,6 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -322,8 +306,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
-					.setApi_id("4ceccf36-7fae-11e4-8328-32913f86e6ed").
-					setApi_secret_key("mk-test-4ceccef0-7fae-11e4-8328-32913f86e6ed")
+					.setApi_key("4ceccf36-7fae-11e4-8328-32913f86e6ed")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
@@ -338,7 +321,6 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -357,8 +339,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
-					.setApi_id("51423988-7f6b-11e4-8328-32913f86e6ed").
-					setApi_secret_key("mk-test-51423949-7f6b-11e4-8328-32913f86e6ed")
+					.setApi_key("51423988-7f6b-11e4-8328-32913f86e6ed")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
@@ -373,7 +354,6 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -390,8 +370,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
-					.setApi_id("51423988-7f6b-11e4-8328-32913f86e6ed").
-					setApi_secret_key("mk-test-51423949-7f6b-11e4-8328-32913f86e6ed")
+					.setApi_key("51423988-7f6b-11e4-8328-32913f86e6ed")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
@@ -406,7 +385,7 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -426,8 +405,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
-					.setApi_id("f4702c83-804a-11e4-8328-32913f86e6ed").
-					setApi_secret_key("mk-test-f4702c43-804a-11e4-8328-32913f86e6ed")
+					.setApi_key("f4702c83-804a-11e4-8328-32913f86e6ed")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
@@ -442,7 +420,7 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -460,8 +438,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
-					.setApi_id("f4702c83-804a-11e4-8328-32913f86e6ed").
-					setApi_secret_key("mk-test-f4702c43-804a-11e4-8328-32913f86e6ed")
+					.setApi_key("f4702c83-804a-11e4-8328-32913f86e6ed")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
@@ -476,7 +453,7 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -495,8 +472,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
-					.setApi_id("fa4472aa-7fac-11e4-8328-32913f86e6ed").
-					setApi_secret_key("mk-test-fa44726d-7fac-11e4-8328-32913f86e6ed")
+					.setApi_key("fa4472aa-7fac-11e4-8328-32913f86e6ed")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
@@ -511,7 +487,7 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -528,8 +504,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
-					.setApi_id("fa4472aa-7fac-11e4-8328-32913f86e6ed").
-					setApi_secret_key("mk-test-fa44726d-7fac-11e4-8328-32913f86e6ed")
+					.setApi_key("fa4472aa-7fac-11e4-8328-32913f86e6ed")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
@@ -544,7 +519,7 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -564,8 +539,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
-					.setApi_id("e0a71c29-8f89-11e4-aad2-0ea81fa3d43c").
-					setApi_secret_key("mk-test-e0a71b29-8f89-11e4-aad2-0ea81fa3d43c")
+					.setApi_key("e0a71c29-8f89-11e4-aad2-0ea81fa3d43c")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
@@ -580,7 +554,7 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -597,8 +571,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
-					.setApi_id("e0a71c29-8f89-11e4-aad2-0ea81fa3d43c").
-					setApi_secret_key("mk-test-e0a71b29-8f89-11e4-aad2-0ea81fa3d43c")
+					.setApi_key("e0a71c29-8f89-11e4-aad2-0ea81fa3d43c")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
@@ -613,7 +586,7 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -632,8 +605,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
-					.setApi_id("7729d25a-903b-11e4-aad2-0ea81fa3d43c").
-					setApi_secret_key("mk-test-7729d14f-903b-11e4-aad2-0ea81fa3d43c")
+					.setApi_key("7729d25a-903b-11e4-aad2-0ea81fa3d43c")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
@@ -648,7 +620,7 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -665,8 +637,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
-					.setApi_id("7729d25a-903b-11e4-aad2-0ea81fa3d43c").
-					setApi_secret_key("mk-test-7729d14f-903b-11e4-aad2-0ea81fa3d43c")
+					.setApi_key("7729d25a-903b-11e4-aad2-0ea81fa3d43c")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
@@ -681,7 +652,7 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -700,8 +671,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(amount)
-					.setApi_id("6517be7b-810a-11e4-8328-32913f86e6ed").
-					setApi_secret_key("mk-test-6517be3b-810a-11e4-8328-32913f86e6ed")
+					.setApi_key("6517be7b-810a-11e4-8328-32913f86e6ed")
 					.setAuth_token(auth_token)
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
@@ -716,7 +686,7 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
@@ -733,8 +703,7 @@ public class MerchantControl {
 			MerchantSDKClient client = MerchantSDKClient.newBuilder()
 					.setMerchant_id(merchant_id).build();
 			TransactionConfig config = TransactionConfig.newBuilder().setAmount(model.getAmount())
-					.setApi_id("6517be7b-810a-11e4-8328-32913f86e6ed").
-					setApi_secret_key("mk-test-6517be3b-810a-11e4-8328-32913f86e6ed")
+					.setApi_key("6517be7b-810a-11e4-8328-32913f86e6ed")
 					.setAuth_token(model.getAuth_token())
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
@@ -749,23 +718,11 @@ public class MerchantControl {
 			jsonObject.accumulate("message", result.getMessage());
 			jsonObject.accumulate("result", result.getResult()==null?"":result.getResult());
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			jsonObject.accumulate("code", "500");
 			jsonObject.accumulate("message", "Fail");
 			jsonObject.accumulate("result", "");
 		}
 		return jsonObject;
-	}
-	
-	private RequestModel getRequestModel(HttpServletRequest request)throws Exception
-	{
-		try {
-			String jsonStr=IOUtils.toString(request.getInputStream(), Charset.forName("UTF-8"));
-			Gson gson=new Gson();
-			return gson.fromJson(jsonStr, RequestModel.class);
-		} catch (Exception e) {
-			// TODO: handle exception
-			throw e;
-		}
 	}
 }
