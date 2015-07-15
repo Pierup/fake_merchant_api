@@ -24,6 +24,14 @@
       </repository> 
 	</repositories>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Pier Nexus Repository</name>
+			<url>http://192.168.1.133:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -72,13 +80,13 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.pier</groupId>
 			<artifactId>pier-java-sdk</artifactId>
 			<version>${pier.sdk.version}</version>
-		</dependency> 
-		
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -92,7 +100,18 @@
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
 				</configuration>
-			</plugin>			
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<url>http://192.168.1.254:8080/manager/text</url>
+					<server>tomcat</server>
+					<username>pier</username>
+					<password>Pierup2014</password>
+					<path>/${build.finalName}</path>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

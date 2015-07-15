@@ -9,7 +9,6 @@ public class RequestModel {
 	String order_id;
 
 	public RequestModel() {
-		// TODO Auto-generated constructor stub
 		super();
 	}
 
@@ -47,7 +46,6 @@ public class RequestModel {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		try {
 			StringBuilder builder=new StringBuilder();
 			Field[] fields=this.getClass().getDeclaredFields();
@@ -59,7 +57,6 @@ public class RequestModel {
 			}
 			return builder.substring(0, builder.length()-1)+"}";
 		} catch (Exception e) {
-			// TODO: handle exception
 			return "";
 		}
 	}
