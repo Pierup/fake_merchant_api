@@ -15,6 +15,14 @@
 		<pier.sdk.version>0.0.1-SNAPSHOT</pier.sdk.version>
 		<maven.test.skip>true</maven.test.skip>
 	</properties>
+	
+	<repositories>
+		<repository>  
+            <id>releases</id>  
+            <name>Pier Nexus Repository</name>  
+            <url>http://192.168.1.133:8081/nexus/content/repositories/releases/</url>  
+      </repository> 
+	</repositories>
 
 	<dependencies>
 		<dependency>
