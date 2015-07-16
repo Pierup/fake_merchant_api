@@ -302,4 +302,5 @@ public class MerchantCtrl {
 		jsonObject.accumulate("message", "Fail");
 		jsonObject.accumulate("result", "");
 	}
+
 }
