@@ -12,7 +12,7 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-		<pier.sdk.version>0.0.1-SNAPSHOT</pier.sdk.version>
+		<pier.sdk.version>1.0.0</pier.sdk.version>
 		<maven.test.skip>true</maven.test.skip>
 	</properties>
 	
@@ -23,14 +23,6 @@
             <url>http://192.168.1.133:8081/nexus/content/repositories/releases/</url>  
       </repository> 
 	</repositories>
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>Pier Nexus Repository</name>
-			<url>http://192.168.1.133:8081/nexus/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
 
 	<dependencies>
 		<dependency>
@@ -82,8 +74,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.pier</groupId>
-			<artifactId>pier-java-sdk</artifactId>
+			<groupId>com.pier.sdk</groupId>
+			<artifactId>java-sdk</artifactId>
 			<version>${pier.sdk.version}</version>
 		</dependency>
 
