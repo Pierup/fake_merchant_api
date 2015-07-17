@@ -1,10 +1,10 @@
-# fake_merchant_api
+# fake_api
 
 ## merchantctrl
 
 ###  apiName: payMC0000000134
 
-apiurl: [host]pier-merchant/merchant_demo/pay/MC0000000134<br/>
+apiurl: [host]pier-merchant/demo/pay/MC0000000134<br/>
 protocl: HTTPS<br/>
 method: POST<br/>
 
@@ -38,7 +38,7 @@ http_code: 200<br/>
 
 ###  apiName: payAAA000000001
 
-apiurl: [host]pier-merchant/merchant_demo/pay/AAA000000001<br/>
+apiurl: [host]pier-merchant/demo/pay/AAA000000001<br/>
 protocl: HTTPS<br/>
 method: POST<br/>
 
@@ -72,7 +72,7 @@ http_code: 200<br/>
 
 ###  apiName: payMC0000000010
 
-apiurl: [host]pier-merchant/merchant_demo/pay/MC0000000010<br/>
+apiurl: [host]pier-merchant/demo/pay/MC0000000010<br/>
 protocl: HTTPS<br/>
 method: POST<br/>
 
@@ -106,7 +106,7 @@ http_code: 200<br/>
 
 ###  apiName: payMC0000000010
 
-apiurl: [host]pier-merchant/merchant_demo/pay/MC0000000010<br/>
+apiurl: [host]pier-merchant/demo/pay/MC0000000010<br/>
 protocl: HTTPS<br/>
 method: POST<br/>
 
