@@ -87,10 +87,10 @@ public class MerchantControl {
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -118,10 +118,10 @@ public class MerchantControl {
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -151,10 +151,10 @@ public class MerchantControl {
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -183,10 +183,10 @@ public class MerchantControl {
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -216,10 +216,10 @@ public class MerchantControl {
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -247,10 +247,10 @@ public class MerchantControl {
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -280,10 +280,10 @@ public class MerchantControl {
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -311,10 +311,10 @@ public class MerchantControl {
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -344,10 +344,10 @@ public class MerchantControl {
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -375,11 +375,13 @@ public class MerchantControl {
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			System.out.println("Start");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
+			System.out.println("Stop");
 			
 			jsonObject.accumulate("code", result.getCode());
 			jsonObject.accumulate("message", result.getMessage());
@@ -410,10 +412,10 @@ public class MerchantControl {
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -443,10 +445,10 @@ public class MerchantControl {
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -477,10 +479,10 @@ public class MerchantControl {
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -509,10 +511,10 @@ public class MerchantControl {
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -544,10 +546,10 @@ public class MerchantControl {
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -576,10 +578,10 @@ public class MerchantControl {
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -610,10 +612,10 @@ public class MerchantControl {
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -642,10 +644,10 @@ public class MerchantControl {
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -676,10 +678,10 @@ public class MerchantControl {
 					.setCurrency(currency)
 					.setId_in_merchant(order_id)
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());
@@ -708,10 +710,10 @@ public class MerchantControl {
 					.setCurrency(model.getCurrency())
 					.setId_in_merchant(model.getOrder_id())
 					.setNotes(getDummyNotes(merchant_id)).build();
-			logger.debug("transaction request==========================");
+			logger.info("transaction request==========================");
 			logger.info(config.toString());
 			SDKResult result = client.transaction(config);
-			logger.debug("transaction response=========================");
+			logger.info("transaction response=========================");
 			logger.info(result.getMessage());
 			
 			jsonObject.accumulate("code", result.getCode());

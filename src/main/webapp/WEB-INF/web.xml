@@ -42,6 +42,11 @@ org.springframework.web.filter.CharacterEncodingFilter
 org.springframework.web.context.ContextLoaderListener
 </listener-class>
 </listener>
+<listener>
+<listener-class>
+org.springframework.web.util.Log4jConfigListener
+</listener-class>
+</listener>
 <!--  Spring MVC DispatcherServlet  -->
 <servlet>
 <servlet-name>SpringMvcMaven</servlet-name>
