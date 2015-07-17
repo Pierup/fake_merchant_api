@@ -15,7 +15,7 @@ import com.pier.sdk.MerchantSDKClient;
 
 
 @Controller
-@RequestMapping(value="/merchant_demo")
+@RequestMapping(value="/demo")
 public class MerchantCtrl {
 
 	private Logger logger = Logger.getLogger(getClass());
