@@ -1,14 +1,15 @@
 #project environment config
 */.settings
+.settings
 .classpath
 .project
 
 #java middle class files
 *.class
 */target
+target
 */bin
 logs
-target
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
