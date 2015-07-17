@@ -2,6 +2,9 @@ package com.pier.merchant;
 
 import java.lang.reflect.Field;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RequestModel {
 	String auth_token;
 	Double amount;
