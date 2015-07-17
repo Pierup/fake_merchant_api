@@ -15,7 +15,7 @@ import com.pier.sdk.MerchantSDKClient;
 
 
 @Controller
-@RequestMapping(value="/server1/sdk")
+@RequestMapping(value="/merchant_demo")
 public class MerchantCtrl {
 
 	private Logger logger = Logger.getLogger(getClass());
@@ -283,10 +283,10 @@ public class MerchantCtrl {
 	}
 	
 	private SDKResult transaction(MerchantSDKClient client, TransactionConfig config) throws Exception {
-		logger.debug("transaction request==========================");
+		logger.info("transaction request==========================");
 		logger.info(config.toString());
 		SDKResult result = client.transaction(config);
-		logger.debug("transaction response=========================");
+		logger.info("transaction response=========================");
 		logger.info(result.getMessage());
 		return result;
 	}
